@@ -33,6 +33,13 @@
     }
 }
 
+#busuanzi_container_page_pv,
+#busuanzi_container_site_pv,
+#busuanzi_value_site_pv,
+#busuanzi_container_site_uv{
+   display: inline !important;
+}
+
 body {
     background-color: #eaeaea;
     margin: 0;
@@ -2168,11 +2175,4 @@ footer .copy-right {
     height: 50px;
     padding: 0px;
     margin: 0px;
-}
-
-#busuanzi_container_page_pv,
-#busuanzi_container_site_pv,
-#busuanzi_value_site_pv,
-#busuanzi_container_site_uv{
-   display: inline !important;
 }
