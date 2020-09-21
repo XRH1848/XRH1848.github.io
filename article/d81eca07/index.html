@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, XRH的Blog">
+    <meta name="keywords" content="TEA加解密备忘录, XRH的Blog">
     <meta name="description" content="None">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | XRH的Blog</title>
+    <title>TEA加解密备忘录 | XRH的Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">TEA加解密备忘录</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +367,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                <span class="chip bg-color">密码学</span>
+                            </a>
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CTF/" class="post-category">
+                                CTF
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -381,21 +398,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-20
+                    2020-09-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-20
+                    2020-09-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    77
+                    346
                 </div>
                 
 
@@ -412,15 +429,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p><code>print(1)</code><br>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h1 id="TEA"><a href="#TEA" class="headerlink" title="TEA"></a>TEA</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>Tiny Encryption Algorithm</li>
+<li>微型</li>
+<li>块密码<h2 id="加密过程"><a href="#加密过程" class="headerlink" title="加密过程"></a>加密过程</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3></li>
+<li>明文为两个32位无符号整数v0,v1</li>
+<li>密钥为四个32位无符号整数k0,k1,k2,k3,共128位</li>
+<li>一个delta=<code>0x9e3779b9</code>(重要特征)</li>
+<li>一个sum，初值为0</li>
+<li>设置一个加密轮数，此处为32轮<h3 id="开始加密"><a href="#开始加密" class="headerlink" title="开始加密"></a>开始加密</h3><img src="https://segmentfault.com/img/remote/1460000008404423?w=250&h=372"></li>
+</ul>
+<ol>
+<li>更新sum，sum+=delta</li>
+<li>v1左移四位，并与k0相加</li>
+<li>v1与sum相加</li>
+<li>v1右移5位，并与k1相加</li>
+<li>对2、3、4步的结果按位异或，加到v0上，则此轮对v0之加密完成</li>
+<li>对v1的加密，与v0同，只是将k0,k1换为k2,k3，v1与v0的地位互换</li>
+<li>重复上述步骤，直至32轮加密完成<h3 id="解密步骤"><a href="#解密步骤" class="headerlink" title="解密步骤"></a>解密步骤</h3></li>
+<li>得到一段密文，则将其以64位为大小进行分块</li>
+<li>以其中一块为例，令其高32位为v0，低32位为v1，加密轮数乘以delta即可得到sum</li>
+<li>将(v0&lt;&lt;4)+k2,v0+sum，(v0&gt;&gt;5)+k3三者异或，并将此结果从v1中减去，则可得v1在此轮加密前的值</li>
+<li>对v0做解密的步骤类似，只是更换密钥及v0与v1的地位</li>
+<li>更新sum，sum-=delta</li>
+<li>重复3、4、5步，共计32轮，即加密的轮数<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>由图可见，加密步骤是沿着两条输入线从上往下行进，而解密则是从下往上行进<br>代码明天补（</li>
+</ol>
 
             </div>
             <hr/>
@@ -446,7 +479,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xrh1848.github.io/article/4a17b156/">https://xrh1848.github.io/article/4a17b156/</a>
+                    <a href="https://xrh1848.github.io/article/d81eca07/">https://xrh1848.github.io/article/d81eca07/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -483,7 +516,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                    <span class="chip bg-color">密码学</span>
+                                </a>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -523,9 +564,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/article/d81eca07/">
                     <div class="card-image">
@@ -543,9 +585,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -558,6 +600,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -577,7 +620,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/article/4a17b156/">
@@ -607,7 +650,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
