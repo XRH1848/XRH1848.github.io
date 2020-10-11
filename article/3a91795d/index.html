@@ -5,7 +5,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="az编码, XRH的Blog">
+    <meta name="keywords" content="Crypto杂记（一）, XRH的Blog">
     <meta name="description" content="None">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>az编码 | XRH的Blog</title>
+    <title>Crypto杂记（一） | XRH的Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">az编码</h1>
+                    <h1 class="description center-align post-title">Crypto杂记（一）</h1>
                 </div>
             </div>
         </div>
@@ -368,14 +368,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BC%96%E7%A0%81/">
-                                <span class="chip bg-color">编码</span>
+                            <a href="/tags/Crypto/">
+                                <span class="chip bg-color">Crypto</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CTF/" class="post-category">
+                                CTF
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -384,21 +393,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-23
+                    2020-10-11
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-23
+                    2020-10-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    122
+                    339
                 </div>
                 
 
@@ -415,37 +424,41 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>其实就是一个base4编码(</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> struct
+                <p>本文主要记录一些古典密码和编码</p>
+<h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><h2 id="单表替换密码"><a href="#单表替换密码" class="headerlink" title="单表替换密码"></a>单表替换密码</h2><h3 id="破解方式"><a href="#破解方式" class="headerlink" title="破解方式"></a>破解方式</h3><pre><code>单表替换，明密文为一一对应关系，故在密文足够长时用词频分析可破，若密钥空间较小，也可使用暴力破解</code></pre>
+<h3 id="常见加密"><a href="#常见加密" class="headerlink" title="常见加密"></a>常见加密</h3><ol>
+<li>凯撒密码<ul>
+<li>使用一个偏移量，将明文中的字母替换成其在字母表中的位置向后偏移量个字母的位置上的字母（循环的）。</li>
+<li>特定名称的凯撒密码：<ul>
+<li>d=10:Avocat</li>
+<li>d=13:ROT13</li>
+<li>d=-5:Cassis</li>
+<li>d=-6:Cassette</li>
+</ul>
+</li>
+<li>变种：<ul>
+<li>含密钥的凯撒密码<br>  将密钥每一位转化为数字，并以这些数分别加密明文的每一位字母</li>
+<li>移位密码<br>  使用ascii表进行移位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>艾特巴什密码 Atbash<pre class="line-numbers language-none"><code class="language-none">明文：A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+密文：Z Y X W V U T S R Q P O N M L K J I H G F E D C B A<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>简单替换密码<br> 其替换顺序不像凯撒有统一的偏移量，而是完全混乱的</li>
+<li>仿射密码<ul>
+<li>加密 E(x)=(ax+b)(mod m)</li>
+<li>解密 D(x)=inv(a)(x-b)(mod m)</li>
+<li>几点准备：<ul>
+<li>x为明文的某种编码</li>
+<li>a和m互质</li>
+<li>m是编码系统中字母的数目<br>##</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
-<span class="token keyword">def</span> <span class="token function">enc</span><span class="token punctuation">(</span>raw<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    cook<span class="token operator">=</span><span class="token builtin">bytes</span><span class="token punctuation">(</span>raw<span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
-    cooked<span class="token operator">=</span><span class="token string">''</span>
-    temp<span class="token operator">=</span><span class="token string">''</span>
-    chars<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'az'</span><span class="token punctuation">,</span><span class="token string">'aZ'</span><span class="token punctuation">,</span><span class="token string">'Az'</span><span class="token punctuation">,</span><span class="token string">'AZ'</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> byte <span class="token keyword">in</span> cook<span class="token punctuation">:</span>
-        num<span class="token operator">=</span>byte
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            temp<span class="token operator">=</span>chars<span class="token punctuation">[</span>num<span class="token operator">%</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token operator">+</span>temp
-            num<span class="token operator">//=</span><span class="token number">4</span>
-        cooked<span class="token operator">+=</span>temp
-        temp<span class="token operator">=</span><span class="token string">''</span>
-    <span class="token keyword">return</span> cooked
-
-<span class="token keyword">def</span> <span class="token function">dec</span><span class="token punctuation">(</span>cooked<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    length<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>cooked<span class="token punctuation">)</span><span class="token operator">//</span><span class="token number">8</span>
-    chars<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'az'</span><span class="token punctuation">,</span><span class="token string">'aZ'</span><span class="token punctuation">,</span><span class="token string">'Az'</span><span class="token punctuation">,</span><span class="token string">'AZ'</span><span class="token punctuation">]</span>
-    temp<span class="token operator">=</span><span class="token number">0</span>
-    raw<span class="token operator">=</span><span class="token string">b''</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            temp<span class="token operator">+=</span><span class="token builtin">pow</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token operator">-</span>j<span class="token punctuation">)</span><span class="token operator">*</span>chars<span class="token punctuation">.</span>index<span class="token punctuation">(</span>cooked<span class="token punctuation">[</span><span class="token number">8</span><span class="token operator">*</span>i<span class="token operator">+</span>j<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token operator">*</span>i<span class="token operator">+</span>j<span class="token operator">*</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        raw<span class="token operator">+=</span>struct<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token string">'>B'</span><span class="token punctuation">,</span>temp<span class="token punctuation">)</span>
-        temp<span class="token operator">=</span><span class="token number">0</span>
-    <span class="token keyword">return</span> <span class="token builtin">str</span><span class="token punctuation">(</span>raw<span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
-
-raw<span class="token operator">=</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入待编码的字符串\n"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>enc<span class="token punctuation">(</span>raw<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
             </div>
             <hr/>
 
@@ -470,7 +483,7 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xrh1848.github.io/article/ef334904/">https://xrh1848.github.io/article/ef334904/</a>
+                    <a href="https://xrh1848.github.io/article/3a91795d/">https://xrh1848.github.io/article/3a91795d/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -508,8 +521,8 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BC%96%E7%A0%81/">
-                                    <span class="chip bg-color">编码</span>
+                                <a href="/tags/Crypto/">
+                                    <span class="chip bg-color">Crypto</span>
                                 </a>
                             
                         </div>
@@ -551,9 +564,10 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/article/3a91795d/">
                     <div class="card-image">
@@ -571,9 +585,9 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -586,6 +600,7 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -604,13 +619,13 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/article/d81eca07/">
+                <a href="/article/ef334904/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="TEA加解密备忘录">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="az编码">
                         
-                        <span class="card-title">TEA加解密备忘录</span>
+                        <span class="card-title">az编码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -621,16 +636,12 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-23
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/CTF/" class="post-category">
-                                    CTF
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            XRH
                             
                         </span>
                     </div>
@@ -638,8 +649,8 @@ raw<span class="token operator">=</span><span class="token builtin">input</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Crypto/">
-                        <span class="chip bg-color">Crypto</span>
+                    <a href="/tags/%E7%BC%96%E7%A0%81/">
+                        <span class="chip bg-color">编码</span>
                     </a>
                     
                 </div>
