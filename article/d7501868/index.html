@@ -5,7 +5,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Crypto杂记（一）, XRH的Blog">
+    <meta name="keywords" content="Lua笔记 1, XRH的Blog">
     <meta name="description" content="None">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Crypto杂记（一） | XRH的Blog</title>
+    <title>Lua笔记 1 | XRH的Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -246,12 +246,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Crypto杂记（一）</h1>
+                    <h1 class="description center-align post-title">Lua笔记 1</h1>
                 </div>
             </div>
         </div>
@@ -366,25 +366,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Crypto/">
-                                <span class="chip bg-color">Crypto</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/CTF/" class="post-category">
-                                CTF
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -393,21 +380,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-11
+                    2021-07-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-10-20
+                    2021-07-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    0
                 </div>
                 
 
@@ -424,124 +411,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本文主要记录一些古典密码和编码</p>
-<h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><h2 id="单表替换密码"><a href="#单表替换密码" class="headerlink" title="单表替换密码"></a>单表替换密码</h2><h3 id="破解方式"><a href="#破解方式" class="headerlink" title="破解方式"></a>破解方式</h3><p>单表替换，明密文为一一对应关系，故在密文足够长时用词频分析可破，若密钥空间较小，也可使用暴力破解</p>
-<h3 id="常见加密"><a href="#常见加密" class="headerlink" title="常见加密"></a>常见加密</h3><ol>
-<li>凯撒密码<ul>
-<li>使用一个偏移量，将明文中的字母替换成其在字母表中的位置向后偏移量个字母的位置上的字母（循环的）。</li>
-<li>特定名称的凯撒密码：<ul>
-<li>d=10:Avocat</li>
-<li>d=13:ROT13</li>
-<li>d=-5:Cassis</li>
-<li>d=-6:Cassette</li>
-</ul>
-</li>
-<li>变种：<ul>
-<li>含密钥的凯撒密码<br>  将密钥每一位转化为数字，并以这些数分别加密明文的每一位字母</li>
-<li>移位密码<br>  使用ascii表进行移位</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>艾特巴什密码 Atbash<pre class="line-numbers language-none"><code class="language-none">明文：A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-密文：Z Y X W V U T S R Q P O N M L K J I H G F E D C B A<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>简单替换密码<br> 其替换顺序不像凯撒有统一的偏移量，而是完全混乱的</li>
-<li>仿射密码<ul>
-<li>加密 E(x)=(ax+b)(mod m)</li>
-<li>解密 D(x)=inv(a)(x-b)(mod m)</li>
-<li>几点准备：<ul>
-<li>x为明文的某种编码</li>
-<li>a和m互质</li>
-<li>m是编码系统中字母的数目</li>
-</ul>
-</li>
-<li>破解<ol>
-<li>爆破：通常用的是字母表，与26互素的不多，乘上偏移，共有312种可能</li>
-<li>已知加密后字符y1,y2,加密前x1,x2,两差相除可得a</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="多表替换"><a href="#多表替换" class="headerlink" title="多表替换"></a>多表替换</h2><ol>
-<li>Playfair<ul>
-<li>加密<ol>
-<li>选取一串英文字母，除去重复出现的字母，将剩下的字母逐个逐个加入 5 ×5 的矩阵内，剩下的空间由未加入的英文字母依 a-z 的顺序加入。注意，将q去除，或将 i 和 j 视作同一字。</li>
-<li>将要加密的明文分成两个一组。若组内的字母相同，将 X（或 Q）加到该组的第一个字母后，重新分组。若剩下一个字，也加入 X 。</li>
-<li>在每组中，找出两个字母在矩阵中的地方。若两个字母不同行也不同列，在矩阵中找出另外两个字母（第一个字母对应行优先），使这四个字母成为一个长方形的四个角。若两个字母同行，取这两个字母右方的字母（若字母在最右方则取最左方的字母）。若两个字母同列，取这两个字母下方的字母（若字母在最下方则取最上方的字母）。<br>新找到的两个字母就是原本的两个字母加密的结果。</li>
-</ol>
-</li>
-<li>解密：特征为两个字母一组。</li>
-</ul>
-</li>
-<li>Polybius(棋盘密码)<ul>
-<li>将26个字母填入5x5的棋盘，i/j同在一格中，每个字母的坐标就是加密后的内容</li>
-<li>变种：ADFGX<br><img src="https://img-blog.csdn.net/20160510152444944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center"></li>
-<li>破解：特征为两个字母一组，密文只出现5个字符</li>
-</ul>
-</li>
-<li>Vigenere密码(维吉尼亚)<ul>
-<li>准备工作<ul>
-<li>密码表<img src="https://ctf-wiki.github.io/ctf-wiki/crypto/classical/figure/vigenere1.jpg"></li>
-<li>将密钥用循环的方式填充，使和明文长度一致。如密钥：crypto，填充至长度10，即cryptocryp</li>
-</ul>
-</li>
-<li>加密<ul>
-<li>明文为列，密钥为行，查表得到密文</li>
-</ul>
-</li>
-<li>破解<ol>
-<li>卡西斯基试验<ul>
-<li>原理：当明文中相同的字符串被相同的密钥加密，会在密文中产生重复序列，通过两重复序列间的距离可推出密钥长度（距离为密钥长度的整数倍）。多寻找几组重复序列，将各组得到的可能密钥长度取交集，往往能唯一确定密钥长度。</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>Nihilist密码<ul>
-<li>同Polybius类似</li>
-<li><img src="https://pic1.zhimg.com/v2-13509dadd1e7eb9211315375b92d0094_r.jpg?source=1940ef5c"></li>
-<li>特征<ol>
-<li>两个密钥，其一用于方阵，另一用于对坐标密文二次加密</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>Hill密码<ul>
-<li>希尔密码（Hill）使用每个字母在字母表中的顺序作为其对应的数字，即 A=0，B=1，C=2 等，然后将明文转化为 n 维向量，跟一个 n × n 的矩阵相乘，再将得出的结果模 26。</li>
-<li>注意：加密用行列式应与26互质，以可逆</li>
-</ul>
-</li>
-<li>AutokeyCipher<ul>
-<li>与维吉尼亚密码类似，不同之处在于其生成密钥的方式</li>
-<li>准备工作<ol>
-<li>一个关键词</li>
-<li>一段明文</li>
-</ol>
-</li>
-<li>关键词长度L1,明文长度L2,则从明文开头开始截取L2-L1的长度，将关键词置于截取片段的开头，构成密钥<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2></li>
-</ul>
-</li>
-<li>培根密码<ul>
-<li>A和B分别代表两种事物，字体、字符等等等等。</li>
-<li>每段长度为5</li>
-<li>加密表<pre class="line-numbers language-none"><code class="language-none">a	AAAAA	g	AABBA	n	ABBAA	t	BAABA
-b	AAAAB	h	AABBB	o	ABBAB	u-v	BAABB
-c	AAABA	i-j	ABAAA	p	ABBBA	w	BABAA
-d	AAABB	k	ABAAB	q	ABBBB	x	BABAB
-e	AABAA	l	ABABA	r	BAAAA	y	BABBA
-f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-</li>
-<li>栅栏密码</li>
-<li>曲路密码</li>
-<li>列移位密码(曲路密码+密钥</li>
-<li>JSFUCK\BrainFuck\Ook</li>
-<li>以图代字:猪圈密码\舞动的小人</li>
-<li>键盘密码 </li>
-</ol>
-
+                
             </div>
             <hr/>
 
@@ -566,7 +436,7 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xrh1848.github.io/article/3a91795d/">https://xrh1848.github.io/article/3a91795d/</a>
+                    <a href="https://xrh1848.github.io/article/d7501868/">https://xrh1848.github.io/article/d7501868/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -603,11 +473,7 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Crypto/">
-                                    <span class="chip bg-color">Crypto</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -647,9 +513,10 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/article/d7501868/">
                     <div class="card-image">
@@ -667,9 +534,9 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -678,6 +545,7 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -688,13 +556,13 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/article/ef334904/">
+                <a href="/article/3a91795d/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="az编码">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Crypto杂记（一）">
                         
-                        <span class="card-title">az编码</span>
+                        <span class="card-title">Crypto杂记（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -705,12 +573,16 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-11
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            XRH
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category">
+                                    CTF
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -718,8 +590,8 @@ f	AABAB	m	ABABB	s	BAAAB	z	BABBB<span aria-hidden="true" class="line-numbers-rows
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BC%96%E7%A0%81/">
-                        <span class="chip bg-color">编码</span>
+                    <a href="/tags/Crypto/">
+                        <span class="chip bg-color">Crypto</span>
                     </a>
                     
                 </div>
