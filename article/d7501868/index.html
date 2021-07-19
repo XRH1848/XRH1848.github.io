@@ -366,12 +366,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/lua/">
+                                <span class="chip bg-color">lua</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Programming-Language/" class="post-category">
+                                Programming Language
+                            </a>
+                        
+                            <a href="/categories/Programming-Language/lua/" class="post-category">
+                                lua
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -387,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-07-10
+                    2021-07-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    710
                 </div>
                 
 
@@ -411,7 +428,100 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><ol>
+<li>大小写敏感</li>
+<li>注释:  <pre class="line-numbers language-lua" data-language="lua"><code class="language-lua"><span class="token comment">-- 单行注释</span>
+<span class="token comment">--[[
+    多行注释
+--]]</span>
+<span class="token comment">---[[</span>
+    快速取消一个多行注释
+<span class="token comment">--]]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>全局变量<br>默认都是全局变量<br>未初始化的变量结果是nil<br>给一个变量赋值nil等同于删除该变量<br>局部变量使用local，在代码块中生效，且解析优先级高于全局变量</li>
+<li>类型<br>动态类型语言，没有类型定义，只有随值附带的类型信息<br>共8种，使用type()函数可查看类型，返回值为类型名字符串<br>type(type(x))–&gt;string <pre class="line-numbers language-none"><code class="language-none">nil
+boolean : true false , 只有nil和false会被条件判断判断为false
+number
+string
+userdata
+function
+thread
+table<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ Boolean的其他细节:<ul>
+<li>三种运算符，and or not</li>
+<li>and 与 or 返回操作数而非布尔值，通过短路求值决定返回哪一个（只要对第二个操作数求值，返回第二个）</li>
+<li>not 只返回Boolean<h1 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h1><h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1></li>
+<li>长度操作符 #</li>
+<li>连接符 ..</li>
+<li>转义<ul>
+<li>\ddd \xhh \u{unicode}</li>
+</ul>
+</li>
+<li>多行字符串  <pre class="line-numbers language-none"><code class="language-none">a&#x3D;[[
+    ajcbajsna
+    asdajcblxbzl
+]]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-none"><code class="language-none">data&#x3D;&quot;ancnaknck\z
+ajsbckaa&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>类型转换<ul>
+<li>tonumber()</li>
+<li>tostring()<h1 id="表"><a href="#表" class="headerlink" title="表"></a>表</h1></li>
+</ul>
+</li>
+<li>特殊的数组，将表赋值给变量，是赋值引用</li>
+<li>创建新元素同python字典<br>  a.x等同于a.[“x”]</li>
+<li>删除只需将键所对值设为nil，同全局变量</li>
+<li>作为数组初始化，索引从1开始<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">a<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">&#125;</span>
+a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">1</span> <span class="token comment">-- true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>使用不符合标识符规范的索引,用[]括起来，<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">a<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">&#125;</span>
+i<span class="token operator">=</span><span class="token number">10</span>
+b<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">&#125;</span> <span class="token comment">-- 会自动计算i+1</span>
+b<span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">2</span> <span class="token comment">-- true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>对于数值类型键，且键从1到某个正整数的，中间没有值为nil表，看作数组，可用#a获得数组长度<ul>
+<li>原理：从1开始，判断元素值是否为nil，是nil返回当前索引-1，不是索引++，继续</li>
+</ul>
+</li>
+<li>遍历表<br>使用pairs迭代器，返回k,v对<br>对于数组，使用ipairs</li>
+<li>表的函数<ul>
+<li>table.insert(table,pos,value)<br>  部分数组元素后移，nil空洞不移<br>  不带pos，则插入到数组最后</li>
+<li>table.remove(table,pos)<br>  其之后的元素前移以填补删除造成的空洞<br>  不带pos，删除末尾元素<h1 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h1></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>以end结尾</li>
+</ul>
+<ol>
+<li>if then else<ul>
+<li>elseif<br>没有switch case</li>
+</ul>
+</li>
+<li>while do</li>
+<li>repeat until<ul>
+<li>同C do while(~…)</li>
+</ul>
+</li>
+<li>for<ul>
+<li>数值型for<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua"><span class="token keyword">for</span> var<span class="token operator">=</span>start<span class="token punctuation">,</span>stop<span class="token punctuation">,</span>step <span class="token keyword">do</span> <span class="token comment">-- step缺省为1</span>
+    something 
+<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li>泛型for<br>遍历迭代函数返回的值</li>
+<li>goto<br>标签设置<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">somecode
+<span class="token keyword">goto</span> label
+<span class="token keyword">local</span> var<span class="token operator">=</span>something
+<span class="token punctuation">::</span>label<span class="token punctuation">::</span>
+<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+局部变量作用域止于声明所在代码块的最后一个有效语句，而标签设置是无效语句，故未跳转到var的作用域内<br>由此引出跳转的限制条件</li>
+</ul>
+<ol>
+<li>不能跳转到代码块中的标签（类似不能访问代码块中的局部变量）</li>
+<li>不能跳转到函数外</li>
+<li>不能跳转到局部变量的作用域</li>
+</ol>
+</li>
+</ol>
+
             </div>
             <hr/>
 
@@ -473,7 +583,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/lua/">
+                                    <span class="chip bg-color">lua</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -513,18 +627,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/article/d7501868/">
+                <a href="/article/c1a0c34c/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Lua笔记 1">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="python补齐-1">
                         
-                        <span class="card-title">Lua笔记 1</span>
+                        <span class="card-title">python补齐-1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -534,18 +647,33 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-16
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            XRH
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Programming-Language/" class="post-category">
+                                    Programming Language
+                                </a>
+                            
+                            <a href="/categories/Programming-Language/python/" class="post-category">
+                                    python
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
